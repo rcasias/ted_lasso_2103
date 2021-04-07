@@ -14,11 +14,14 @@ class Team
     end
   end
 
-  def captain
+  def captain_instance
     name = @players.max_by do |player|
       player.salary
     end
-    name.name
+  end
+
+  def captain
+    captain_instance.name
   end
 
   def positions_filled
