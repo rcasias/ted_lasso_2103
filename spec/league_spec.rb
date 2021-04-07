@@ -64,5 +64,21 @@ RSpec.describe League do
 
       expect(premier.players_by_team).to eq(result)
     end
+
+    it 'can find team positions' do
+      premier = League.new("Premier League")
+      roy = Player.new({name: "Roy Kent", position: "Center Midfielder" , salary: 1_000_000})
+      sam = Player.new({name: "Sam Obisanya", position: "Right-back Defender", salary: 600_000})
+      phil = Player.new({name: "Phil", position: "Midfielder", salary: 5_200_000})
+      richmond = Team.new("AFC Richmond", "Ted Lasso", [roy, sam, phil])
+      jamie = Player.new({name: "Jamie Tartt", position: "Striker", salary: 1_500_000})
+      fernandinho = Player.new({name: "Fernandinho", position: "Midfielder", salary: 5_200_000})
+      nick = Player.new({name: "Nick", position: "Midfielder", salary: 5_200_000})
+      manchester = Team.new("Manchester City FC", "Pep Guardiola", [jamie, fernandinho, nick])
+      premier.add_team(richmond)
+      premier.add_team(manchester)
+
+      expect(premier.most_expensive_player).to eq(["Phil", "Fernandinho", "Nick"])
+    end
   end
 end
