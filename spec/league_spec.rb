@@ -65,7 +65,7 @@ RSpec.describe League do
       expect(premier.players_by_team).to eq(result)
     end
 
-    it 'can find team positions' do
+    it 'can find team by highest pay' do
       premier = League.new("Premier League")
       roy = Player.new({name: "Roy Kent", position: "Center Midfielder" , salary: 1_000_000})
       sam = Player.new({name: "Sam Obisanya", position: "Right-back Defender", salary: 600_000})
